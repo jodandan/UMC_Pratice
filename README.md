@@ -44,7 +44,7 @@
         * 아까 열었던 명령창을 닫았다면, 1번 과정에 있는 명령창 여는 방법을 다시 한 번 따라해주세요! (git clone 명령어는 다시 치지 않아도 됩니다!)
 
     ```
-        cd [운영진이 레포 이름 넣기]
+        cd 4th_UMC_Web
         git add .
         git commit -m "My First Update"
         git push origin main
