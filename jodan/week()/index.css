@@ -217,73 +217,36 @@ table {
 }	
 
 
-/* 여기서 부터 슬라이드배너 */
-.outer {
-	border: 6px solid royalblue;
-	width: 1080px;
+/* 여기서 부터 /* 자동 배너 슬라이스*/ 
+.slideshow-container { 
+	border: 1px solid seagreen; 
+	width: 1535px; 
 	height: 320px;
-	margin: 0 auto;
-	overflow-x: hidden;
-  }
-  
-.inner-list {
-	display: flex;
-	transition: .3s ease-out;
-	height: 100%;
-  }
-  
-.inner {
-	border: 5px solid olive;
-	
-	padding: 0 517px;
-  }
-  
-.button-list {
-	text-align: center;
-  }
 
-
-/* 자동 배너 슬라이스*/
-
-#sliderbanner { 
-	border: 1px solid seagreen;
-	width: 1535px;
-	height: 320px;
 }
-
-
-.slider {
-	position: relative;
-	width: 100%;
-	height: 400px;
-	overflow: hidden;
+  
+.slide {
+	position: absolute;  /* 절대 위치에 배치 */
+	top: 0;  /* 위쪽에 위치 */
+	left: 0;  /* 왼쪽에 위치 */
+	width: 1535px;  /* 너비 1535px */
+	height: 320px;  /* 높이 320px */
+	display: none;  /* 숨김 처리 */
   }
   
-  .slide {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	/*
-	transition: opacity 1s ease-in-out;
-	*/
+  .fade {
+	animation-name: fade;  /* 애니메이션 이름 fade */
+	animation-duration: 5s;  /* 애니메이션 지속 시간 5초 */
   }
   
-  .slide.active {
-	opacity: 1;
+  @keyframes fade {  /* fade 애니메이션에 대한 키프레임 선언 */
+	from {  /* 시작 상태 */
+	  opacity: 0;  /* 투명도 0 (완전 투명) */
+	}
+	to {  /* 끝 상태 */
+	  opacity: 1;  /* 투명도 1 (불투명) */
+	}
   }
-
-  .slide1 { 
-	position: absolute;
-  }
-
-/*
-slidebanner는 적당한 넓이와 높이값을 가져야 합니다.
-width:985px;height:100px;
-*/
-
 
 /* 마우스오버시 하위메뉴 */
 .dropbtn {
