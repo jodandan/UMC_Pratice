@@ -1,5 +1,6 @@
 // "slide" 클래스를 가진 모든 요소를 선택해서 slides 배열에 저장
 const slides = document.querySelectorAll(".slide");
+console.log(slides);
 // 슬라이드 인덱스 초기값을 0으로 설정
 let slideIndex = 0;
 
