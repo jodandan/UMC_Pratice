@@ -1,3 +1,4 @@
+/*
 // "slide" 클래스를 가진 모든 요소를 선택해서 slides 배열에 저장
 const slides = document.querySelectorAll(".slide");
 console.log(slides);
@@ -39,3 +40,4 @@ showSlide(slideIndex);
 
 // advanceSlides 함수를 5초마다 한번씩 실행함으로써 슬라이드를 자동으로 전환.
 setInterval(advanceSlides, 5000);
+*/
