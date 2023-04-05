@@ -1,43 +1,116 @@
-/*
-// "slide" 클래스를 가진 모든 요소를 선택해서 slides 배열에 저장
+const slideshowContainer = document.getElementById("slideshow-container");
 const slides = document.querySelectorAll(".slide");
-console.log(slides);
-// 슬라이드 인덱스 초기값을 0으로 설정
-let slideIndex = 0;
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
+const stopBtn = document.getElementById("stop-btn");
 
-// 슬라이드 인덱스에 해당하는 슬라이드를 보여주는 함수 정의
+let slideIndex = 0;
+let isAutoSlideEnabled = true;
+let intervalId;
+
 function showSlide(n) {
-  // 모든 슬라이드에 대해 반복
-  for (let i = 0; i < slides.length; i++) {
-    // 현재 슬라이드가 존재하면
+  const movingIcons = document.querySelectorAll('.moving_icon');
+  movingIcons.forEach(icon => icon.classList.remove('active'));
+
+  for (let i = 0; i <= slides.length; i++) {
     if (slides[i]) {
-      // "fade" 클래스를 제거하여 페이드아웃 효과로 해당 슬라이드를 숨김
-      slides[i].classList.remove("fade");
-      // 슬라이드의 display 속성을 "none"으로 설정하여 숨김
-      slides[i].style.display = "none";
+      if (i === slideIndex) {
+        slides[i].style.transform = "translateX(0%)";
+      } else if (i < slideIndex) {
+        slides[i].style.transform = "translateX(-100%)";
+      } else if (i === slides.length - 1 && slideIndex === 0) {
+        slides[i].style.transform = "translateX(100%)";
+      } else {
+        slides[i].style.transform = "translateX(100%)";
+      }
     }
   }
-  // 지정한 슬라이드 인덱스가 존재하면
-  if (slides[n]) {
-    // "fade" 클래스를 추가하여 페이드인 효과로 해당 슬라이드를 보여줌
-    slides[n].classList.add("fade");
-    // 슬라이드의 display 속성을 "block"으로 설정하여 보여줌
-    slides[n].style.display = "block";
+  
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
   }
+  
+  updateIndexIndicator();
 }
 
-// 다음 슬라이드로 이동하는 함수 정의
+const movingIcons = document.querySelectorAll('.moving_icon');
+movingIcons.forEach((icon, index) => {
+    icon.addEventListener('click', () => {
+        // Remove the active class from all icons
+        movingIcons.forEach((icon) => {
+            icon.classList.remove('active');
+        });
+        // Add the active class to the clicked icon
+        icon.classList.add('active');
+        // Show the corresponding slide
+        showSlide(index);
+    });
+});
+
+// Update the active icon when the slide changes
+function updateActiveIcon() {
+    // Remove the active class from all icons
+    movingIcons.forEach((icon) => {
+        icon.classList.remove('active');
+    });
+    // Add the active class to the current icon
+    const currentIcon = movingIcons[slideIndex];
+    currentIcon.classList.add('active');
+}
+
+
 function advanceSlides() {
-  // 슬라이드 인덱스에 1을 더함
   slideIndex++;
- // 슬라이드 인덱스가 슬라이드에 비해 클수록 0으로 재설정됨.
- if (slideIndex >= slides.length) {
-  slideIndex = 0;
+  
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
+  }
+
+  showSlide(slideIndex);
+  updateIndexIndicator();
+  updateActiveIcon();
 }
-// 업데이트된 슬라이드 인덱스으로 슬라이드 표시
-showSlide(slideIndex);
+function reverseSlides() {
+  slideIndex--;
+  
+  if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+  
+  showSlide(slideIndex);
+  updateIndexIndicator();
+  updateActiveIcon();
 }
 
-// advanceSlides 함수를 5초마다 한번씩 실행함으로써 슬라이드를 자동으로 전환.
-setInterval(advanceSlides, 5000);
-*/
+
+function toggleAutoSlide() {
+  isAutoSlideEnabled = !isAutoSlideEnabled;
+  const stopBtnIcon = stopBtn.querySelector("i");
+  
+  if (isAutoSlideEnabled) {
+    intervalId = setInterval(advanceSlides, 4000);
+    stopBtn.classList.remove("paused");
+    stopBtnIcon.className = "fa fa-stop";
+  } else {
+    clearInterval(intervalId);
+    stopBtn.classList.add("paused");
+    stopBtnIcon.className = "fa fa-play";
+  } 
+}
+
+function updateIndexIndicator() {
+  const currentIndexElem = document.querySelector(".current_index");
+  const totalIndexElem = document.querySelector(".total_index");
+  
+  currentIndexElem.textContent = slideIndex + 1;
+  totalIndexElem.textContent = slides.length;
+}
+
+nextBtn.addEventListener("click", advanceSlides);
+prevBtn.addEventListener("click", reverseSlides);
+stopBtn.addEventListener("click", toggleAutoSlide);
+
+intervalId = setInterval(advanceSlides, 4000);
+slideIndex = 0; // set initial slide index to 0
+showSlide(slideIndex);
+updateIndexIndicator();

@@ -158,17 +158,6 @@
                             <input class="textbox" type="text" placeholder="검색어 입력">
                             <img class="in_textbox" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
                         </div>
-                        <!--
-                            <i class="fas fa-light fa-star"></i>
-                            <i class="fas fa-light fa-lightbulb"></i>
-                            <i class="fas fa-thin fa-paper-plane"></i>
-
-                         <div class="searchbox_container-1">
-                            <span class="icon"><i class="fa fa-search"></i></span>
-
-                            <input type="search" id="search" />
-                        </div> 
-                        -->
                     </div>
                     
                 </div>
@@ -182,37 +171,135 @@
 
     <div class="slideshow-container">
 		<div class="slide fade">
-            <img class="cat" src="slide1.jpg" alt="Image 1">		
+            <a href="https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%96%91%EC%9D%B4">
+                <img class="cat" src="slide1.jpg" alt="Image 1">		
+            </a> 
         </div>
 		<div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EA%B0%95%EC%95%84%EC%A7%80">
 			<img class="cat" src="slide2.jpg" alt="Image 2">
+            </a>
 		</div>
 		<div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
 			<img class="cat" src="slide3.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide4.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide5.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide6.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide7.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide8.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide9.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide10.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide11.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide12.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide13.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide14.jpg" alt="Image 3">
+            </a>
+		</div>
+        <div class="slide fade">
+            <a href="https://ko.wikipedia.org/wiki/%EC%95%B5%EB%AC%B4%EC%83%88">
+			<img class="cat" src="slide15.jpg" alt="Image 3">
+            </a>
 		</div>
 	</div>
 
     <div id="autoslide_under">
         <div class="under_container">
             <div class="controller">
-                <div class="number_index">
-                    <span class="current_index">1</span>
-                    "/"
-                    <span class="total_index">14</span>
+                <div class="index-indicator">
+                    <span class="current_index"></span>
+                    /
+                    <span class="total_index"></span>
                 </div>
                 <div class="controller_button">
-                    <button type="button" class="before"><i class="far fa-chevron-left"></i></button>
-                    <button type="button" class="pause"> ☆</button>
-                    <button type="button" class="next"> →</button>
+                    <button type="button" id="prev-btn"> 
+                        <i class="fas fa-chevron-left"></i>    
+                    </button>
+                    <button type="button" id="stop-btn"> 
+                        <i class="fas fa-play"></i>    
+                    </button>
+                    <button type="button" id="next-btn"> 
+                        <i class="fas fa-chevron-right"></i>    
+                    </button>
                 </div>
             </div>
             <div class="divider">
 
             </div>
             <div class="moving_banner">
+                <div class="moving_banner_icon" id="movingBannerIcon">
+                    <span class="moving_icon active">고양이1</span >
+                    <span class="moving_icon">고양이2</span >
+                    <span class="moving_icon">고양이3</span >
+                    <span class="moving_icon">고양이4</span >
+                    <span class="moving_icon">고양이5</span >
+                    <span class="moving_icon">고양이6</span >
+                    <span class="moving_icon">고양이7</span >
+                    <span class="moving_icon">고양이8</span >
+                    <span class="moving_icon">고양이9</span >
+                    <span class="moving_icon">고양이10</span >
+                    <span class="moving_icon">고양이11</span >
+                    <span class="moving_icon">고양이12</span >
+                    <span class="moving_icon">고양이13</span >
+                    <span class="moving_icon">고양이14</span>
+                    <span class="moving_icon">고양이15</span>
+                </div>
+                <div class="moving_banner_icon_leftline" style="display: block;">
+                    
+                </div>
+                <div class="moving_banner_icon_rightline" style="display: block;">
+                    
+                </div>
+            </div>
+            <button type="button" class="openpage">
+                <i class="fas fa-chevron-down"></i>
+            </button> 
 
             </div>
-
         </div>
     </div>
 
@@ -226,29 +313,3 @@
 
 </body>
 </html>
-
-
-
- <!--   
-    <a href="https://www.inflearn.com/">
-        <svg width="20" height="20" xmlns="http://www.w3.org/1999/xlink">
-            <image href="inflearn_img_logo.svg"> 교육</image>
-        </svg>
-    </a>
-
-        <a href="https://www.rallit.com/">
-                <svg width="20" height="20" xmlns="http://www.w3.org/1999/xlink">
-                    <image href="rallit_img_logo.svg"> 채용</image>
-                </svg>
-        </a>
-    </a>
-
-     <ul class="secondul">
-                <li class="secondli"><a href="#"><img src="C:\Users\wdd45\OneDrive\바탕 화면\성섭\UMC 1주차\inflean_clonecoding\인프런 브랜드 로고.svg" style="width: 110px";></a>　</li>
-                <li class="secondli"><a href="#">강의　</a></li>
-                <li class="secondli"><a href="#">로드맵　</a></li>
-                <li class="secondli"><a href="#">멘토링　</li>
-                <li class="secondli"><a href="#">커뮤니티　</li>
-                <li class="secondli"><a href="#">인프런　</li>
-           </ul>
--->   

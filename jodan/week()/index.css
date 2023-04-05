@@ -257,7 +257,13 @@ table {
 	border: 1px solid seagreen; 
 	width: 1535px; 
 	height: 320px;
-
+	position: relative;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+	overflow: hidden;
+	white-space: nowrap;
 }
   
 .slide {
@@ -266,15 +272,14 @@ table {
 	left: 0;  /* 왼쪽에 위치 */
 	width: 1535px;  /* 너비 1535px */
 	height: 320px;  /* 높이 320px */
-	display: none;  /* 숨김 처리 */
+	display: block; /* change display to block */
+	transition: transform 1s ease-in-out; /* add a transition for the transform property */
   }
   
 .fade {
 
 	animation-duration: 5s;  /* 애니메이션 지속 시간 5초 */
 }
-  
-
   
 .cat {
   width: 100%;
@@ -313,7 +318,7 @@ table {
     background-color: rgba(0,0,0,.5);
 	margin-left: 220px;
 }
-.number_index {  /*인덱스 숫자를 담는 div*/
+.index-indicator {  /*인덱스 숫자를 담는 div*/
 	margin-right: auto;
 	
 }
@@ -336,8 +341,31 @@ table {
 	
 }
 
-.before .pause .next{
+#prev-btn {
 	font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+	padding: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+#stop-btn { 
+	font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+	padding: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+#next-btn { 
+	font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+	padding: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
 }
 
 .divider{  /* 인덱스 와 버튼 사이 중간에 나누는 선*/ 
@@ -348,19 +376,105 @@ table {
 	margin-left: 280px;
 }
 
-.moving_banner{
+.moving_banner{ /*움직이는 아이콘들 담는 그릇*/
 	border: 1px solid black;
 	height: 36px;
 	width: 700px;
 	position: relative;
     overflow: hidden;
 	margin-left: 300px;
-
+}
+.moving_banner_icon {/* 움직이는 아이콘들*/ 
+	position: absolute;
+    left: 50%;
+    top: 0;
+    display: flex;
+    z-index: 71;
+    height: 36px;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(-50%);
+	overflow: hidden; /* hide overflowing elements */
+	
+}
+.moving_banner_icon_leftline{ /* 그릇에서 왼쪽 끝*/
+	position: absolute;
+    top: 0;
+    width: 15px;
+    height: 36px;
+    z-index: 72;
+	display: none;
+    left: 0;
+    background-image: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+}
+.moving_banner_icon_rightline { /* 그릇에서 오른쪽 끝*/
+	position: absolute;
+    top: 0;
+    width: 15px;
+    height: 36px;
+    z-index: 72;
+	display: none;
+    right: 0;
+    background-image: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+}
+.moving_icon { /* 움직이는 아이콘들*/
+	flex: 0 0 auto;
+    padding: 0 1rem;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: .875rem;
+    font-weight: 700;
+    color: #495057;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 1px #ced4da;
+    background-color: #fff;
+    cursor: pointer;
+	margin-left: 8px;
+	transition: all 0.3s ease-in-out;
+	flex-shrink: 0;
+	margin: 0 10px;
 }
 
 
+  .moving_icon.active {
+	opacity: 1;
+  }
+  
+  .slideshow-container:hover .moving_icon {
+	right: -20px;
+  }
+  
+  .slideshow-container:hover .moving_icon.active {
+	right: -50px;
+  }
+
+.moving_icon.active {
+	color: #00c471;
+    box-shadow: inset 0 0 0 2px #00c471;
+  }
 
 
+  
+
+
+/* 움직이는 아이콘 오른쪽 전체 아이콘 보는 버튼*/
+ .openpage {
+	font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+	margin: 0;
+	margin-left: -19rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    color: #495057;
+    border-radius: 36px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    background-color: #fff;
+    cursor: pointer;
+	margin-right: 200px;
+
+  }
 
 
 
@@ -388,7 +502,7 @@ table {
 	background-color: #f9f9f9;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
+	z-index: 9999;
   }
   
   .dropdown-content a {
