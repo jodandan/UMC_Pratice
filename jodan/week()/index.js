@@ -1,8 +1,25 @@
+
 const slideshowContainer = document.getElementById("slideshow-container");
 const slides = document.querySelectorAll(".slide");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 const stopBtn = document.getElementById("stop-btn");
+const toggleButton = document.getElementById("toggleButton");
+const showMoreContainer = document.querySelector(".show-more-container");
+const closeButton = document.querySelector('.e-close-show-more');
+const showMoreList = document.querySelector('.show-more-list');
+
+toggleButton.addEventListener("click", () => {
+  showMoreContainer.style.display = showMoreContainer.style.display === "none" ? "block" : "none";
+});
+
+closeButton.addEventListener('click', () => {
+  if (showMoreList.style.display === 'block') {
+    showMoreList.style.display = 'none';
+  } else {
+    showMoreList.style.display = 'block';
+  }
+});
 
 let slideIndex = 0;
 let isAutoSlideEnabled = true;
@@ -114,3 +131,4 @@ intervalId = setInterval(advanceSlides, 4000);
 slideIndex = 0; // set initial slide index to 0
 showSlide(slideIndex);
 updateIndexIndicator();
+

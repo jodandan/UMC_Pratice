@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="index.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> 
     <!-- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css -->
-    <script src="https://kit.fontawesome.com/d3df61ac73.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d3df61ac73.js" crossorigin="anonymous">
+        
+    </script>
 </head>
 <style> 
 
@@ -58,7 +60,38 @@
             </div>
 
             <div class="header_under_content_menu">
-                <div class="cource">강의</div>
+                <div class="course">
+                    <div class="dropdown">
+                        <button class="dropbtn change_green lecture">강의</button>
+                        <div class="dropdown-content">
+                            <a href="https://www.inflearn.com/community/questions">
+                                <span>
+                                    질문 & 답변
+                                </span>
+                            </a>
+                            <a href="https://www.inflearn.com/community/chats">
+                                <span>
+                                    자유주제
+                                </span>
+                            </a>
+                            <a href="https://www.inflearn.com/community/studies">
+                                <span>
+                                    스터디
+                                </span>
+                            </a>
+                            <a href="https://www.inflearn.com/community/projects">
+                                <span>
+                                    팀 프로젝트
+                                </span>
+                            </a>
+                            <a href="https://www.inflearn.com/blogs">
+                                <span>
+                                    블로그
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="loadmap">
                     <a class="change_green" href="https://www.inflearn.com/roadmaps">로드맵</a>
                 </div>
@@ -110,7 +143,7 @@
                             </span>
                         </a>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="inflean">
                     <div class="dropdown">
@@ -294,21 +327,53 @@
                     
                 </div>
             </div>
-            <button type="button" class="openpage">
+            <button type="button" class="openpage" id="toggleButton">
                 <i class="fas fa-chevron-down"></i>
-            </button> 
-
+            </button>
+            <div class="container show-more-container" style="display: block;">
+                <div class="show-more-box">
+                    <div class="show-more-header">
+                    <h3>진행중인 모든 이벤트</h3>
+                        <button type="button" class="e-close-show-more">닫기</button>
+                    </div>
+                        <div class="show-more-list">
+                            <ul class="">
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="736">7th창립기념일🍀</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="396">로드맵 🌱</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="733">무료 부트캠프</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="612">3시간 완강 가능!</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="394">Top 50 👑</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="145">왕초보 모여라 😎</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet pagination-bullet-active" data-id="729">클라우드 국비교육</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="59">신규 강의 🎁</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="579">강의 추천 🧞</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="730">AI 국비교육</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="60">지금 할인중 💸</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="236">지식공유신청</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="137">인프런 동료찾기</span></li>
+          
+                                <li style="width: 180px;"><span class="pagination-bullet e-select-bullet hero-bullet" data-id="87">인프런은 🌱</span></li>
+                             </ul>
+                        </div>
+                </div>
             </div>
+            
         </div>
     </div>
 
 
-
-
-
-
     <script src="index.js"> </script>
-
-
 </body>
 </html>
