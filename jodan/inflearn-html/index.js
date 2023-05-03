@@ -1,5 +1,5 @@
 
-const slideshowContainer = document.getElementById("slideshow-container");
+
 
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
@@ -20,6 +20,9 @@ closeButton.addEventListener("click", () => {
   showMoreContainer.style.display = "none";
 });
 
+//=================================================================
+
+const slideshowContainer = document.getElementById("slideshow-container");
 const slides = document.querySelectorAll('.slide');
 const iconsContainer = document.querySelector('.moving_banner_icon');
 const icons = document.querySelectorAll('.moving_icon');
@@ -27,7 +30,7 @@ const iconWidth = icons[0].offsetWidth; // 아이콘의 너비
 const margin = 10; // 각 아이콘 사이의 간격
 const borderWidth = 2; // 초록색 테두리 두께
 
-let slideIndex = 0;
+let slideIndex = 1;
 let currentIndex = 0;
 let currentPosition = 0;
 
@@ -36,7 +39,7 @@ function showSlide(n) {
   const movingIcons = document.querySelectorAll('.moving_icon');
   movingIcons.forEach(icon => icon.classList.remove('active'));
 
-  for (let i = 0; i <= slides.length; i++) {
+  for (let i = 0; i < slides.length; i++) {
     if (slides[i]) {
       if (i === slideIndex) {
         slides[i].style.transform = "translateX(0%)";
@@ -55,15 +58,7 @@ function showSlide(n) {
   }
   
   updateIndexIndicator();
-
-  // 첫번째 사진이 나온 후에 초록색 테두리를 고양이2에 씌웁니다.
-  if (slideIndex === 1) {
-    removeBorder(currentIndex);
-    currentIndex = 1;
-    setBorder(currentIndex);
-  }
 }
-
 
 // 초록색 테두리를 씌우는 함수
 function setBorder(index) {
@@ -85,7 +80,10 @@ function moveIcon() {
   currentPosition -= (iconWidth + margin);
   iconsContainer.style.transform = `translateX(${currentPosition}px)`;
 
-  slideIndex = currentIndex; // slideIndex도 함께 증가하도록 수정
+  currentIndex = (slideIndex -1);
+  if (isAutoSlideEnabled) { // 정지 버튼이 눌려있지 않을 때만 슬라이드를 이동시킵니다.
+    showSlide(slideIndex);
+  }
   showSlide(slideIndex); // 사진 슬라이드 업데이트
   if (currentIndex === 0) { // 고양이 아이콘이 15까지 이동한 후 다시 1부터 시작하도록 수정
     currentPosition = 0;
@@ -100,7 +98,24 @@ setBorder(0);
 // 일정 간격으로 아이콘 이동 및 초록색 테두리 변경
 setInterval(moveIcon, 4000);
 
+let intervalId;
+let isAutoSlideEnabled = true;
 
+function toggleAutoSlide() {
+  isAutoSlideEnabled = !isAutoSlideEnabled;
+  const stopBtnIcon = stopBtn.querySelector("i");
+  
+  if (isAutoSlideEnabled) {
+    intervalId = setInterval(advanceSlides, 4000);
+    stopBtn.classList.remove("paused");
+    stopBtnIcon.className = "fa fa-play";
+  } else {
+    clearInterval(intervalId);
+    stopBtn.classList.add("paused");
+    stopBtnIcon.className = "fa fa-stop";
+  } 
+}
+stopBtn.addEventListener("click", toggleAutoSlide);
 //=========================================
 function advanceSlides() {
   slideIndex++;
@@ -126,20 +141,7 @@ function reverseSlides() {
 }
 
 
-function toggleAutoSlide() {
-  isAutoSlideEnabled = !isAutoSlideEnabled;
-  const stopBtnIcon = stopBtn.querySelector("i");
-  
-  if (isAutoSlideEnabled) {
-    intervalId = setInterval(advanceSlides, 4000);
-    stopBtn.classList.remove("paused");
-    stopBtnIcon.className = "fa fa-stop";
-  } else {
-    clearInterval(intervalId);
-    stopBtn.classList.add("paused");
-    stopBtnIcon.className = "fa fa-play";
-  } 
-}
+
 
 function updateIndexIndicator() {
   const currentIndexElem = document.querySelector(".current_index");
@@ -151,7 +153,8 @@ function updateIndexIndicator() {
 
 nextBtn.addEventListener("click", advanceSlides);
 prevBtn.addEventListener("click", reverseSlides);
-stopBtn.addEventListener("click", toggleAutoSlide);
+
+
 
 intervalId = setInterval(advanceSlides, 4000);
 slideIndex = 0; // set initial slide index to 0
