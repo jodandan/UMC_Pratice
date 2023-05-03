@@ -173,7 +173,7 @@ table {
 	width: 40px;
 }
 .loadmap{
-	margin-right: 15px;
+	margin-right: 20px;
 
 }
 .mentoring { 
@@ -278,7 +278,7 @@ table {
 }	
 
 
-/* 여기서 부터 자동 배너 슬라이스*/ 
+/* 여기서 부터 /* 자동 배너 슬라이스*/ 
 .slideshow-container { 
 	border: 1px solid seagreen; 
 	width: 1	x; 
@@ -394,9 +394,7 @@ table {
     cursor: pointer;
 }
 
-/* 인덱스 와 버튼 사이 중간에 나누는 선*/ 
-
-.divider{  
+.divider{  /* 인덱스 와 버튼 사이 중간에 나누는 선*/ 
 	margin: 0 1rem;
     width: 1px;
     height: 36px;
@@ -407,10 +405,10 @@ table {
 .moving_banner{ /*움직이는 아이콘들 담는 그릇*/
 	border: 1px solid ;
 	height: 36px;
-	width: 830px;
+	width: 700px;
 	position: relative;
     overflow: hidden;
-	margin-left: 270px;
+	margin-left: 300px;
 }
 .moving_banner_icon {/* 움직이는 아이콘들*/ 
 	position: absolute;
@@ -424,10 +422,6 @@ table {
 	transform: translateX(-50%);
 	overflow: hidden; /* hide overflowing elements */
 	overflow-y: scroll; /* add a scrollbar */
-	display: flex;
-  	overflow-x: auto;
- 	 white-space: nowrap; /* 아이콘들이 한 줄로 나타나도록 설정합니다. */
-	
 }
 .moving_banner_icon_leftline{ /* 그릇에서 왼쪽 끝*/
 	position: absolute;
@@ -471,7 +465,6 @@ table {
 
   .moving_icon.active {
 	opacity: 1;
-	
   }
   
   .slideshow-container:hover .moving_icon {
@@ -495,7 +488,7 @@ table {
  .openpage {
 	font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
 	margin: 0;
-	margin-left: -12rem;
+	margin-left: -19rem;
     width: 36px;
     height: 36px;
     font-size: 1rem;

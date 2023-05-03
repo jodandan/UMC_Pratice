@@ -1,6 +1,6 @@
 
 const slideshowContainer = document.getElementById("slideshow-container");
-const slides = document.querySelectorAll(".slide");
+
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 const stopBtn = document.getElementById("stop-btn");
@@ -8,23 +8,30 @@ const toggleButton = document.getElementById("toggleButton");
 const showMoreContainer = document.querySelector(".show-more-container");
 const closeButton = document.querySelector('.e-close-show-more');
 const showMoreList = document.querySelector('.show-more-list');
+const showmorebox = document.querySelector('.show-more-box');
 
+/*진행중인 이벤트 버튼*/ 
 toggleButton.addEventListener("click", () => {
   showMoreContainer.style.display = showMoreContainer.style.display === "none" ? "block" : "none";
 });
 
-closeButton.addEventListener('click', () => {
-  if (showMoreList.style.display === 'block') {
-    showMoreList.style.display = 'none';
-  } else {
-    showMoreList.style.display = 'block';
-  }
+// 진행중인 이벤트 버튼 안에있는 닫기 버튼
+closeButton.addEventListener("click", () => {
+  showMoreContainer.style.display = "none";
 });
 
-let slideIndex = 0;
-let isAutoSlideEnabled = true;
-let intervalId;
+const slides = document.querySelectorAll('.slide');
+const iconsContainer = document.querySelector('.moving_banner_icon');
+const icons = document.querySelectorAll('.moving_icon');
+const iconWidth = icons[0].offsetWidth; // 아이콘의 너비
+const margin = 10; // 각 아이콘 사이의 간격
+const borderWidth = 2; // 초록색 테두리 두께
 
+let slideIndex = 0;
+let currentIndex = 0;
+let currentPosition = 0;
+
+// 사진 하나씩 이동하는 함수 
 function showSlide(n) {
   const movingIcons = document.querySelectorAll('.moving_icon');
   movingIcons.forEach(icon => icon.classList.remove('active'));
@@ -48,34 +55,53 @@ function showSlide(n) {
   }
   
   updateIndexIndicator();
-}
 
-const movingIcons = document.querySelectorAll('.moving_icon');
-movingIcons.forEach((icon, index) => {
-    icon.addEventListener('click', () => {
-        // Remove the active class from all icons
-        movingIcons.forEach((icon) => {
-            icon.classList.remove('active');
-        });
-        // Add the active class to the clicked icon
-        icon.classList.add('active');
-        // Show the corresponding slide
-        showSlide(index);
-    });
-});
-
-// Update the active icon when the slide changes
-function updateActiveIcon() {
-    // Remove the active class from all icons
-    movingIcons.forEach((icon) => {
-        icon.classList.remove('active');
-    });
-    // Add the active class to the current icon
-    const currentIcon = movingIcons[slideIndex];
-    currentIcon.classList.add('active');
+  // 첫번째 사진이 나온 후에 초록색 테두리를 고양이2에 씌웁니다.
+  if (slideIndex === 1) {
+    removeBorder(currentIndex);
+    currentIndex = 1;
+    setBorder(currentIndex);
+  }
 }
 
 
+// 초록색 테두리를 씌우는 함수
+function setBorder(index) {
+  icons[index].style.border = `${borderWidth}px solid green`;
+  icons[index].classList.add('active');
+}
+
+// 초록색 테두리를 제거하는 함수
+function removeBorder(index) {
+  icons[index].style.border = 'none';
+  icons[index].classList.remove('active');
+}
+
+// 다음 아이콘을 활성화하고 이전 아이콘의 초록색 테두리를 제거하는 함수
+function moveIcon() {
+  removeBorder(currentIndex);
+  currentIndex = (currentIndex + 1) % icons.length;
+  setBorder(currentIndex);
+  currentPosition -= (iconWidth + margin);
+  iconsContainer.style.transform = `translateX(${currentPosition}px)`;
+
+  slideIndex = currentIndex; // slideIndex도 함께 증가하도록 수정
+  showSlide(slideIndex); // 사진 슬라이드 업데이트
+  if (currentIndex === 0) { // 고양이 아이콘이 15까지 이동한 후 다시 1부터 시작하도록 수정
+    currentPosition = 0;
+    iconsContainer.style.transform = `translateX(${currentPosition}px)`;
+  }
+}
+
+// 초록색 테두리 초기화
+removeBorder(currentIndex);
+setBorder(0);
+
+// 일정 간격으로 아이콘 이동 및 초록색 테두리 변경
+setInterval(moveIcon, 4000);
+
+
+//=========================================
 function advanceSlides() {
   slideIndex++;
   
