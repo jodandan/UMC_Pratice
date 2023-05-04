@@ -120,7 +120,7 @@ table {
 }
 .change_green:hover {  /* 마우스 오버(마우스 올렸을때) */
 	text-decoration: none;  
-	color: green;
+	color: #00c471;
 }
 .change_green:focus {
 	 text-decoration: none; 
@@ -199,6 +199,14 @@ table {
 	display: inline-flex;
 	
 }
+.textbox:hover {
+	border: 1px solid gray;
+  }
+
+  .textbox:focus {
+	outline: 1px solid #00c471;
+  }
+  
 .searchbox_container-1{
 		width: 300px;
 		vertical-align: middle;
@@ -517,7 +525,15 @@ table {
     align-items: center;
     justify-content: center;
 }
-
+#toggleButton i {
+	transition: transform 0.3s ease-in-out;
+  }
+  #toggleButton.active i {
+	transform: rotate(180deg);
+  }
+  #toggleButton.active {
+	border: 2px solid green;
+  }
 .show-more-header{ /* 더보기 눌렀을때 나오는 진행중인 이벤트*/
 	width: 700px;
 	display: flex;

@@ -13,7 +13,14 @@ const showmorebox = document.querySelector('.show-more-box');
 /*진행중인 이벤트 버튼*/ 
 toggleButton.addEventListener("click", () => {
   showMoreContainer.style.display = showMoreContainer.style.display === "none" ? "block" : "none";
+
 });
+// 이벤트 더보기 누르면 초록색 활성화되는 함수 
+toggleButton.addEventListener('click', () => {
+  toggleButton.classList.toggle('active');
+});
+
+
 
 // 진행중인 이벤트 버튼 안에있는 닫기 버튼
 closeButton.addEventListener("click", () => {
@@ -80,7 +87,7 @@ function moveIcon() {
   currentPosition -= (iconWidth + margin);
   iconsContainer.style.transform = `translateX(${currentPosition}px)`;
 
-  currentIndex = (slideIndex -1);
+  
   if (isAutoSlideEnabled) { // 정지 버튼이 눌려있지 않을 때만 슬라이드를 이동시킵니다.
     showSlide(slideIndex);
   }
@@ -108,13 +115,18 @@ function toggleAutoSlide() {
   if (isAutoSlideEnabled) {
     intervalId = setInterval(advanceSlides, 4000);
     stopBtn.classList.remove("paused");
-    stopBtnIcon.className = "fa fa-play";
-  } else {
-    clearInterval(intervalId);
-    stopBtn.classList.add("paused");
     stopBtnIcon.className = "fa fa-stop";
+  } else {
+    clearInterval(intervalId); // 아이콘이동을 중지합니다.
+    stopBtn.classList.add("paused");
+    stopBtnIcon.className = "fa fa-play";
   } 
+  
+  
 }
+
+
+
 stopBtn.addEventListener("click", toggleAutoSlide);
 //=========================================
 function advanceSlides() {
