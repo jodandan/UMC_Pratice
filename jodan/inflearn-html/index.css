@@ -736,7 +736,7 @@ ul {
   .e_search_input:focus {
 	outline:none;
 	background-color: white;
-
+ 
 }
 .e_search_input:focus::placeholder {
 	color: grey;
