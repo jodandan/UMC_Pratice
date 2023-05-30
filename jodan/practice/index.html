@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>미디어 쿼리 예시</title>
+  <style>
+    /* 일반 스타일 */
+    p {
+      color: blue;
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width: 600px) {
+        /*max-width: 600px 조건을 사용하여 가로 너비가 600px 이하일 때 스타일이 적용*/
+      p {
+        color: red;
+      }
+    }
+
+    input {
+      width: 200px;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #000;
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width: 600px) {
+      input {
+        background-color: #f0f0f0;
+        color: #333;
+      }
+    }
+  </style>
+</head>
+<body>
+    <input type="text" placeholder="이곳에 입력해주세요">
+    <p>안녕하세요. 이 텍스트의 색상은 미디어 쿼리에 따라 달라집니다.</p>
+</body>
+</html>

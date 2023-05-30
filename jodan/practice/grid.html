@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>유튜브 홈페이지 미디어 쿼리 예시</title>
+  <style>
+        /* 일반 스타일 */
+    .searchbox { 
+        margin: 10px;
+    }
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+    }
+
+    .square-box {
+        border: 1px solid blue;
+        margin: 10px;
+        height: 100px;
+        width: 100%;
+        padding-bottom: 20%;
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width: 1200px) {
+      .video-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .square-box {
+        width: 60%;
+        padding-bottom: 60%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .video-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-height: 800px) {
+      .square-box {
+        width: 10%;
+        height: 10vh;
+      }
+    }
+    @media (max-width: 600px) {
+      .video-list {
+        grid-template-columns: 1fr;
+      }
+      .searchbox { 
+        display: none;
+      }
+      .square-box {
+        width: 40%;
+        padding-bottom: 40%;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+    <div class="searchbox">
+        <input type="text">
+    </div>
+    <div class="video-list">
+        <div class="square-box">동영상 1</div>
+        <div class="square-box">동영상 2</div>
+        <div class="square-box">동영상 3</div>
+        <div class="square-box">동영상 4</div>
+        <div class="square-box">동영상 5</div>
+        <div class="square-box">동영상 6</div>
+        <div class="square-box">동영상 7</div>
+        <div class="square-box">동영상 8</div>
+    <!-- 나머지 동영상 항목들 -->
+    </div>
+</body>
+</html>
