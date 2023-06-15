@@ -191,10 +191,12 @@ table {
 	width: 40px;
 }
 .loadmap{
+	margin-top: 23px;
 	margin-right: 15px;
 
 }
 .mentoring { 
+	margin-top: 23px;
 	margin-right: 5px;
 }
 .comunite{
@@ -216,6 +218,45 @@ table {
 	align-items: center;
 	display: inline-flex;
 	
+}
+.mobile_container {
+    display: none;
+}
+.categori{ 
+	display: flex;
+}
+@media (max-width: 1024px) {
+
+	.header_under{
+		height: 50px!important;
+	}
+	.categori , .searchbox{ 
+		display: none;
+	}
+	
+	.inflearnlogo { 
+		
+		display: inline-flex;
+    	align-items: center;
+    	height: 100%;
+		flex: 1;
+    	justify-content: center;
+		right: 5%;
+		top: 5%;
+		font-size: 14px;
+	}
+
+	.loginbox { 
+	flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+	width: 40%;
+	position: fixed;
+    right: 5%;
+    top: 5%;
+	font-size: 14px;
+	}
 }
 .textbox:hover {
 	border: 1px solid gray;
@@ -265,7 +306,6 @@ table {
 	border-radius: 4px;
 	color: #4a4a4a;
 	height: 64px;
-	text-align:center;
 
 
 
